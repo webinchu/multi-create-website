@@ -4,7 +4,6 @@
 
 ~~~
 unzip ./sql/wp-tmp1-demo.sql.gz && unzip  ./tmp/wp-tmp1.zip 
-unzip ./sql/wp-tmp2-demo.sql.gz && unzip  ./tmp/wp-tmp2.zip 
 ~~~
 
 - 2、执行命令
