@@ -2,10 +2,6 @@
 
 $argvs = $_SERVER['argv'];
 
-echo "<pre>";
-print_r($argvs);
-echo "</pre>";
-
 if (empty($argvs) || $_SERVER['argc'] != 8) {
     echo "argvs is illegal";
     exit();
