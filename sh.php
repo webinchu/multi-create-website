@@ -18,7 +18,7 @@ include './MysqlTool.php';
 $mysql = new MysqlTool($mysqlUser, $mysqlPwd);
 
 $rootPath = $data['rootPath'];
-//$nginxHostPath = '/www/server/panel/vhost/nginx';
+
 $targetDir = $rootPath . '/' . $data['targetDir'];
 $domains = array_unique(explode(';', $data['domains']));
 if (empty($domains)) {
