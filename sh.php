@@ -55,6 +55,7 @@ foreach ($domains as $domain) {
     $mysql->updateSite($domain, $domain);
     $wpConfigTpl = include "./tpl/wpConfigTpl.php";
     file_put_contents($dirPath . '/wp-config.php', $wpConfigTpl);
+    //reload nginx
     shell_exec("nginx -s reload");
 }
 
