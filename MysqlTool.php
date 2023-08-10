@@ -57,7 +57,7 @@ class MysqlTool {
         try {
             $this->mysqlPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->mysqlPdo->exec($sql);
-            echo $sql . " DONE . \n";
+            echo $sql . " DONE . \n"; //输出信息
             return $sql;
         } catch(Throwable $e) {
             echo "updateSite ERROR : " . $e->getMessage() . "; SQL: ".$sql . "\n";
