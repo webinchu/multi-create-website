@@ -9,13 +9,13 @@ declare(strict_types=1);
  */
 class ArgMapping
 {
-    const WEB_SITE_NUM_STRING = '--domains=';
-    const ROOT_PATH_STRING = '--rootPath=';
-    const NGINX_HOST_FILE_PATH_STRING = '--nginxHostPath=';
-    const TARGET_DIR_STRING = '--targetDir=';
-    const MYSQL_USER_STRING = '--mysqlUser=';
-    const MYSQL_PWD_STRING = '--mysqlPwd=';
-    const MYSQL_FILE_PATH_STRING = '--mysqlFilePath=';
+    const WEB_DOMAINS = '--domains';
+    const ROOT_PATH_STRING = '--rootPath';
+    const NGINX_HOST_FILE_PATH_STRING = '--nginxHostPath';
+    const TARGET_DIR_STRING = '--targetDir';
+    const MYSQL_USER_STRING = '--mysqlUser';
+    const MYSQL_PWD_STRING = '--mysqlPwd';
+    const MYSQL_FILE_PATH_STRING = '--mysqlFilePath';
 
     public static function getArgs(array $argvs)
     {
@@ -30,35 +30,63 @@ class ArgMapping
         ];
 
         foreach ($argvs as $argv) {
-
-            if (strstr($argv,self::WEB_SITE_NUM_STRING)) {
-                $data['domains'] = explode(self::WEB_SITE_NUM_STRING, $argv)[1];
-            }
-
-            if (strstr($argv,self::ROOT_PATH_STRING)) {
-                $data['rootPath'] = explode(self::ROOT_PATH_STRING,$argv)[1];
-            }
-
-            if (strstr($argv,self::TARGET_DIR_STRING)) {
-                $data['targetDir'] = explode(self::TARGET_DIR_STRING,$argv)[1];
-            }
-
-            if (strstr($argv,self::MYSQL_USER_STRING)) {
-                $data['mysqlUserName'] = explode(self::MYSQL_USER_STRING, $argv)[1];
-            }
-
-            if (strstr($argv, self::MYSQL_PWD_STRING)) {
-                $data['mysqlPwd'] = explode(self::MYSQL_PWD_STRING, $argv)[1];
-            }
-
-            if (strstr($argv, self::NGINX_HOST_FILE_PATH_STRING)) {
-                $data['nginxHostPath'] = explode(self::NGINX_HOST_FILE_PATH_STRING, $argv)[1];
-            }
-
-            if (strstr($argv, self::MYSQL_FILE_PATH_STRING)) {
-                $data['mysqlFilePath'] = explode(self::MYSQL_FILE_PATH_STRING, $argv)[1];
+            list($param, $value) = explode('=', $argv, 2);
+            switch ($param) {
+                case self::WEB_DOMAINS:
+                    $data['domains'] = $value;
+                    break;
+                case self::ROOT_PATH_STRING:
+                    $data['rootPath'] = $value;
+                    break;
+                case self::TARGET_DIR_STRING:
+                    $data['targetDir'] = $value;
+                    break;
+                case self::MYSQL_USER_STRING:
+                    $data['mysqlUserName'] = $value;
+                    break;
+                case self::MYSQL_PWD_STRING:
+                    $data['mysqlPwd'] = $value;
+                    break;
+                case self::NGINX_HOST_FILE_PATH_STRING:
+                    $data['nginxHostPath'] = $value;
+                    break;
+                case self::MYSQL_FILE_PATH_STRING:
+                    $data['mysqlFilePath'] = $value;
+                    break;
+                default:
+                    // Handle unknown parameter or provide an error message
+                    break;
             }
         }
         return $data;
+//
+//
+//        if (strstr($argv, self::WEB_SITE_NUM_STRING)) {
+//            $data['domains'] = explode(self::WEB_SITE_NUM_STRING, $argv)[1];
+//        }
+//
+//        if (strstr($argv, self::ROOT_PATH_STRING)) {
+//            $data['rootPath'] = explode(self::ROOT_PATH_STRING, $argv)[1];
+//        }
+//
+//        if (strstr($argv, self::TARGET_DIR_STRING)) {
+//            $data['targetDir'] = explode(self::TARGET_DIR_STRING, $argv)[1];
+//        }
+//
+//        if (strstr($argv, self::MYSQL_USER_STRING)) {
+//            $data['mysqlUserName'] = explode(self::MYSQL_USER_STRING, $argv)[1];
+//        }
+//
+//        if (strstr($argv, self::MYSQL_PWD_STRING)) {
+//            $data['mysqlPwd'] = explode(self::MYSQL_PWD_STRING, $argv)[1];
+//        }
+//
+//        if (strstr($argv, self::NGINX_HOST_FILE_PATH_STRING)) {
+//            $data['nginxHostPath'] = explode(self::NGINX_HOST_FILE_PATH_STRING, $argv)[1];
+//        }
+//
+//        if (strstr($argv, self::MYSQL_FILE_PATH_STRING)) {
+//            $data['mysqlFilePath'] = explode(self::MYSQL_FILE_PATH_STRING, $argv)[1];
+//        }
     }
 }
