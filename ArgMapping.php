@@ -30,6 +30,7 @@ class ArgMapping
         ];
 
         foreach ($argvs as $argv) {
+            //格式化参数
             list($param, $value) = explode('=', $argv, 2);
             switch ($param) {
                 case self::WEB_DOMAINS:
