@@ -1,4 +1,4 @@
-## 批量生成站点(Generate wordpress sites in batches)
+## 批量创建站点(Generate wordpress sites in batches)
 
 - 1、解压(unzip)
 
