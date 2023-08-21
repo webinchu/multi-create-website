@@ -55,7 +55,7 @@ class ArgMapping
                     $data['mysqlFilePath'] = $value;
                     break;
                 default:
-                    // Handle unknown parameter or provide an error message
+                    // default
                     break;
             }
         }
