@@ -20,7 +20,7 @@ class ArgMapping
     public static function getArgs(array $argvs)
     {
         $data = [
-            'domains' => '', //域名
+            'domains' => '', //域名,多个可用,隔开
             'rootPath' => '', //根目录
             'targetDir' => '', //需要复制的目标文件夹
             'mysqlUserName' => '', //数据库用户名
