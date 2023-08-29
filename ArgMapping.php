@@ -25,7 +25,7 @@ class ArgMapping
             'targetDir' => '', //需要复制的目标文件夹
             'mysqlUserName' => '', //数据库用户名
             'mysqlPwd' => '', //数据库密码
-            'nginxHostPath' => '', //nginx 配置文件夹路径
+            'nginxHostPath' => '', //nginx 配置文件夹路径,绝对路径
             'mysqlFilePath' => '' //需要导入的数据库文件
         ];
 
