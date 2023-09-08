@@ -26,7 +26,7 @@ class ArgMapping
             'mysqlUserName' => '', //数据库用户名
             'mysqlPwd' => '', //数据库密码
             'nginxHostPath' => '', //nginx 配置文件夹路径,绝对路径
-            'mysqlFilePath' => '' //需要导入的数据库文件
+            'mysqlFilePath' => '' //需要导入的数据库文件,绝对路径
         ];
 
         foreach ($argvs as $argv) {
