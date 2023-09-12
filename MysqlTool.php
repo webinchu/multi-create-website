@@ -7,7 +7,7 @@ class MysqlTool {
     protected string $dbPassword;
     private PDO $mysqlPdo;
 
-    public function __construct($mysqlUser,$mysqlPwd)
+    public function __construct($mysqlUser, $mysqlPwd)
     {
         $this->serverName = "localhost";
         $this->dbUser = $mysqlUser;
@@ -15,24 +15,29 @@ class MysqlTool {
         $this->mysqlPdo = new PDO("mysql:host=$this->serverName", $this->dbUser, $this->dbPassword);
     }
 
-    public function createDatabase(string $databaseName)
+    /**
+     * 创建数据库
+     * @param string $dbName 数据库名称
+     * @return string
+     */
+    public function createDatabase(string $dbName)
     {
-
-        $sql = "CREATE DATABASE IF NOT EXISTS `$databaseName`";
+        $sql = "CREATE DATABASE IF NOT EXISTS `$dbName`";
         try {
             $this->mysqlPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->mysqlPdo->exec($sql);
             echo $sql . " DONE . \n";
             return $sql;
-        } catch(Throwable $e) {
-            return "createDatabase ERROR : " . $e->getMessage() . "; SQL: ".$sql . "\n";
+        } catch (Throwable $e) {
+            return "createDatabase ERROR : " . $e->getMessage() . "; SQL: " . $sql . "\n";
         }
     }
 
     /**
      * 导入demo数据
-     * @param string $dbName
-     * @return bool
+     * @param string $dbName 数据库
+     * @param string $mysqlFile 数据库文件路径
+     * @return string
      */
     public function exportData(string $dbName, string $mysqlFile)
     {
@@ -48,8 +53,9 @@ class MysqlTool {
 
     /**
      * 更新站点数据
-     * @param string $domain
-     * @return bool
+     * @param string $dbName 数据库
+     * @param string $domain 域名
+     * @return string
      */
     public function updateSite(string $dbName,string $domain)
     {
