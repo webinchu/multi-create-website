@@ -1,24 +1,19 @@
 <?php
+include './MysqlTool.php';
+include './ArgMapping.php';
 
 $argvs = $_SERVER['argv'];
-
 if (empty($argvs) || $_SERVER['argc'] != 8) {
     echo "argvs is illegal";
     exit();
 }
-
-include './ArgMapping.php';
 $data = ArgMapping::getArgs($argvs);
 
 $mysqlUser = $data['mysqlUserName'];
 $mysqlPwd = $data['mysqlPwd'];
 $nginxHostPath = $data['nginxHostPath'];
-
-include './MysqlTool.php';
 $mysql = new MysqlTool($mysqlUser, $mysqlPwd);
-
 $rootPath = $data['rootPath'];
-
 $targetDir = $rootPath . '/' . $data['targetDir'];
 $domains = array_unique(explode(';', $data['domains']));
 if (empty($domains)) {
