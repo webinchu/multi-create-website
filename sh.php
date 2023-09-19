@@ -17,12 +17,12 @@ $rootPath = $data['rootPath'];
 $targetDir = $rootPath . '/' . $data['targetDir'];
 $domains = array_unique(explode(';', $data['domains']));
 if (empty($domains)) {
-    echo "Domain is empty";
+    echo "Domain is empty \n";
     exit;
 }
 
 if (!is_dir($targetDir)) {
-    echo 'Target dir ' . $targetDir . " is not dir";
+    echo 'Target dir ' . $targetDir . " is not dir \n";
     exit;
 }
 
