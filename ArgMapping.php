@@ -65,7 +65,8 @@ class ArgMapping
     public static function getArgMapping(): array
     {
         return [
-            self::MYSQL_FILE_PATH_STRING, self::ROOT_PATH_STRING
+            self::MYSQL_FILE_PATH_STRING, self::ROOT_PATH_STRING, self::MYSQL_PWD_STRING, self::MYSQL_USER_STRING,
+            self::TARGET_DIR_STRING
         ];
     }
 }
