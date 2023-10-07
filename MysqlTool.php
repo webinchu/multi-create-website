@@ -59,14 +59,24 @@ class MysqlTool {
      */
     public function updateSite(string $dbName,string $domain)
     {
-        $sql = "update `$dbName`.wp_options set option_value = 'http://".$domain."' where option_name= 'siteurl' or option_name = 'home' or option_name = 'blogname'";
+        $sql = "update `$dbName`.wp_options set option_value = 'http://" . $domain . "' where option_name= 'siteurl' or option_name = 'home' or option_name = 'blogname'";
         try {
             $this->mysqlPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->mysqlPdo->exec($sql);
             echo $sql . " DONE . \n"; //输出信息
             return $sql;
-        } catch(Throwable $e) {
-            echo "updateSite ERROR : " . $e->getMessage() . "; SQL: ".$sql . "\n";
+        } catch (Throwable $e) {
+            echo "updateSite ERROR : " . $e->getMessage() . "; SQL: " . $sql . "\n";
+        }
+    }
+
+    public function setSite(string $dbName, string $domain)
+    {
+        $sql = "update `$dbName`.wp_options set option_value = 'http://" . $domain . "' where option_name= 'siteurl' or option_name = 'home' or option_name = 'blogname'";
+        try {
+            return $sql;
+        } catch (Throwable $e) {
+            echo "updateSite ERROR : " . $e->getMessage() . "; SQL: " . $sql . "\n";
         }
     }
 }
