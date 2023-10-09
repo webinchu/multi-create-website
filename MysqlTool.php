@@ -76,7 +76,7 @@ class MysqlTool {
         try {
             return $sql;
         } catch (Throwable $e) {
-            echo "updateSite ERROR : " . $e->getMessage() . "; SQL: " . $sql . "\n";
+            throw new Exception("Error setting");
         }
     }
 }
