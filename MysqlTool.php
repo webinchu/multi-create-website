@@ -69,17 +69,5 @@ class MysqlTool {
             echo "updateSite ERROR : " . $e->getMessage() . "; SQL: " . $sql . "\n";
         }
     }
-
-    public function setSite(string $dbName, string $domain)
-    {
-        $sql = "update `$dbName`.wp_options set option_value = 'http://" . $domain . "' where option_name= 'siteurl' or option_name = 'home' or option_name = 'blogname'";
-        try {
-            $this->mysqlPdo->exec($sql);
-            echo $sql . " DONE . \n"; //输出信息
-            return $sql;
-        } catch (Throwable $e) {
-            throw new Exception("Error setting");
-        }
-    }
 }
 
