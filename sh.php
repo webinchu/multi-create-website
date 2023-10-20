@@ -2,8 +2,11 @@
 include './MysqlTool.php';
 include './ArgMapping.php';
 
+//参数个数
+$argvLength = 8;
+
 $argvs = $_SERVER['argv'];
-if (empty($argvs) || $_SERVER['argc'] != 8) {
+if (empty($argvs) || $_SERVER['argc'] != $argvLength) {
     echo "argvs is illegal";
     exit();
 }
