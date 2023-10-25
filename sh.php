@@ -19,13 +19,8 @@ $mysql = new MysqlTool($mysqlUser, $mysqlPwd);
 $rootPath = $data['rootPath'];
 $targetDir = $rootPath . '/' . $data['targetDir'];
 $domains = array_unique(explode(';', $data['domains']));
-if (empty($domains)) {
-    echo "Domain is empty \n";
-    exit;
-}
-
-if (!is_dir($targetDir)) {
-    echo 'Target dir ' . $targetDir . " is not dir \n";
+if (empty($domains) || !is_dir($targetDir)) {
+    echo "Domain is empty or Target dir " . $targetDir . " is not dir \n";
     exit;
 }
 
