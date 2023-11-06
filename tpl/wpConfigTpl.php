@@ -4,11 +4,6 @@ return <<<TPL
 <?php
 /**
  * The base configuration for WordPress
- * * Database settings
- * * Secret keys
- * * Database table prefix
- * * ABSPATH
- *
  * @package WordPress
  */
 
