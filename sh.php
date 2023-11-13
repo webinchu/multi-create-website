@@ -29,10 +29,11 @@ if (!is_dir($multiPath)) {
     mkdir($multiPath, 777);
 }
 
-
+//multi create site
 foreach ($domains as $domain) {
     $dirPath = $multiPath . $domain;
     $nginxTpl = include "./tpl/nginxTpl.php";
+    //exec command
     shell_exec("sudo cp -R $targetDir $dirPath");
     shell_exec("sudo chmod 777 -R $dirPath");
     $nginxHostFileName = $domain . '.conf';
