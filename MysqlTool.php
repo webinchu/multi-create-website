@@ -69,5 +69,23 @@ class MysqlTool {
             echo "updateSite ERROR : " . $e->getMessage() . "; SQL: " . $sql . "\n";
         }
     }
+
+    /**
+     * 删除数据库
+     * @param string $dbName 数据库名称
+     * @return string
+     */
+    public function delDatabase(string $dbName)
+    {
+        $sql = "Drop table `$dbName`";
+        try {
+            $this->mysqlPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->mysqlPdo->exec($sql);
+            echo $sql . " DONE . \n";
+            return $sql;
+        } catch (Throwable $e) {
+            return "createDatabase ERROR : " . $e->getMessage() . "; SQL: " . $sql . "\n";
+        }
+    }
 }
 
