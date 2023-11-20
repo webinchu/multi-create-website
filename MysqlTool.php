@@ -87,5 +87,21 @@ class MysqlTool {
             return "createDatabase ERROR : " . $e->getMessage() . "; SQL: " . $sql . "\n";
         }
     }
+
+    /**
+     * 更新数据库
+     * @param string $dbName 数据库名称
+     * @return string
+     */
+    public function updateData(string $dbName)
+    {
+        $sql = "update table `$dbName`";
+        try {
+            $this->mysqlPdo->exec($sql);
+            return $sql;
+        } catch (Throwable $e) {
+            return "createDatabase ERROR : " . $e->getMessage() . "; SQL: " . $sql . "\n";
+        }
+    }
 }
 
