@@ -77,7 +77,7 @@ class MysqlTool {
      */
     public function delDatabase(string $dbName)
     {
-        $sql = "Drop table `$dbName`";
+        $sql = "delete table `$dbName`";
         try {
             $this->mysqlPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->mysqlPdo->exec($sql);
