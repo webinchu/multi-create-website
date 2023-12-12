@@ -29,10 +29,11 @@ if (!is_dir($multiPath)) {
     mkdir($multiPath, 777);
 }
 
+$tplDir = './tpl/';
 //multi create site
 foreach ($domains as $domain) {
     $dirPath = $multiPath . $domain;
-    $nginxTpl = include "./tpl/nginxTpl.php";
+    $nginxTpl = include $tplDir . "nginxTpl.php";
     //exec command
     shell_exec("sudo cp -R $targetDir $dirPath");
     shell_exec("sudo chmod 777 -R $dirPath");
@@ -47,7 +48,7 @@ foreach ($domains as $domain) {
     $mysql->exportData($domain, $data['mysqlFilePath']);
     //更新数据
     $mysql->updateSite($domain, $domain);
-    $wpConfigTpl = include "./tpl/wpConfigTpl.php";
+    $wpConfigTpl = include $tplDir . "wpConfigTpl.php";
     file_put_contents($dirPath . '/wp-config.php', $wpConfigTpl);
     //reload nginx
     shell_exec("nginx -s reload");
