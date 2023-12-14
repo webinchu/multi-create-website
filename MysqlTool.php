@@ -1,6 +1,7 @@
 <?php
 
-class MysqlTool {
+class MysqlTool
+{
 
     protected string $serverName;
     protected string $dbUser;
@@ -57,7 +58,7 @@ class MysqlTool {
      * @param string $domain 域名
      * @return string
      */
-    public function updateSite(string $dbName,string $domain)
+    public function updateSite(string $dbName, string $domain)
     {
         $sql = "update `$dbName`.wp_options set option_value = 'http://" . $domain . "' where option_name= 'siteurl' or option_name = 'home' or option_name = 'blogname'";
         try {
@@ -72,6 +73,10 @@ class MysqlTool {
 
     public function insertData()
     {
+        $newMatch = match (1) {
+            1 => 'domain',
+            2 => 'patch'
+        };
         return [
             'domains' => '', //域名,多个可用,隔开
             'rootPath' => '', //根目录
@@ -79,7 +84,7 @@ class MysqlTool {
             'mysqlUserName' => '', //数据库用户名
             'mysqlPwd' => '', //数据库密码
             'nginxHostPath' => '', //nginx 配置文件夹路径,绝对路径
-            'mysqlFilePath' => '' //需要导入的数据库文件,绝对路径
+            'mysqlFilePath' => $newMatch //需要导入的数据库文件,绝对路径
         ];
     }
 }
