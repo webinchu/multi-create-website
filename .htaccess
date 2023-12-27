@@ -1,0 +1,5 @@
+#以下表示：如果存在目录或文件则直接访问，否则执行RewriteRule
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+#隐藏index.php
+RewriteRule ^(.*)$ index.php/$1 [L]
