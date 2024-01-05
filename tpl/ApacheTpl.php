@@ -9,4 +9,10 @@ return <<<TPL
      DocumentRoot "$dirPath"
      ServerName test02.example.com
 </VirtualHost>
+
+
+<VirtualHost *:80>
+     DocumentRoot "$dirPath"
+     ServerName test03.example.com
+</VirtualHost>
 TPL;
