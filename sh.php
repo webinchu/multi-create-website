@@ -12,6 +12,7 @@ if (empty($argvs) || $_SERVER['argc'] != $argvLength) {
 }
 $data = ArgMapping::getArgs($argvs);
 
+// sudo will
 $mysqlUser = $data['mysqlUserName'];
 $mysqlPwd = $data['mysqlPwd'];
 $nginxHostPath = $data['nginxHostPath'];
