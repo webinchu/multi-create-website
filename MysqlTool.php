@@ -70,22 +70,5 @@ class MysqlTool
             echo "updateSite ERROR : " . $e->getMessage() . "; SQL: " . $sql . "\n";
         }
     }
-
-    public function insertData()
-    {
-        $newMatch = match (1) {
-            1 => 'domain',
-            2 => 'patch'
-        };
-        return [
-            'domains' => '', //域名,多个可用,隔开
-            'rootPath' => '', //根目录
-            'targetDir' => '', //需要复制的目标文件夹
-            'mysqlUserName' => '', //数据库用户名
-            'mysqlPwd' => '', //数据库密码
-            'nginxHostPath' => '', //nginx 配置文件夹路径,绝对路径
-            'mysqlFilePath' => $newMatch //需要导入的数据库文件,绝对路径
-        ];
-    }
 }
 
