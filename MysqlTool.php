@@ -8,6 +8,11 @@ class MysqlTool
     protected string $dbPassword;
     private PDO $mysqlPdo;
 
+    const TARGET_DIR_STRING = '--targetDir';
+    const MYSQL_USER_STRING = '--mysqlUser';
+    const MYSQL_PWD_STRING = '--mysqlPwd';
+    const MYSQL_FILE_PATH_STRING = '--mysqlFilePath';
+
     public function __construct($mysqlUser, $mysqlPwd)
     {
         $this->serverName = "localhost";
