@@ -7,7 +7,7 @@ $argvLength = 8;
 
 $argvs = $_SERVER['argv'];
 if (empty($argvs) || $_SERVER['argc'] != $argvLength) {
-    echo "argvs is illegal";
+    echo "argvs is illegal，please check your configuration";
     exit();
 }
 $data = ArgMapping::getArgs($argvs);
@@ -21,7 +21,7 @@ $rootPath = $data['rootPath'];
 $targetDir = $rootPath . '/' . $data['targetDir'];
 $domains = array_unique(explode(';', $data['domains']));
 if (empty($domains) || !is_dir($targetDir)) {
-    echo "Domain is empty or Target dir " . $targetDir . " is not dir \n";
+    echo "Domain is empty or Target dir " . $targetDir . " is not dir，please check rules\n";
     exit;
 }
 
