@@ -8,9 +8,6 @@ class MysqlTool
     protected string $dbPassword;
     private PDO $mysqlPdo;
 
-    const MYSQL_PWD_STRING = 'mysqlPwd';
-    const MYSQL_FILE_PATH_STRING = 'mysqlFilePath';
-
     const MYSQL_HOST = "localhost";
 
     public function __construct($mysqlUser, $mysqlPwd)
@@ -36,6 +33,25 @@ class MysqlTool
             return $sql;
         } catch (Throwable $e) {
             return "createDatabase ERROR : " . $e->getMessage() . "; SQL: " . $sql . "\n";
+        }
+    }
+
+    /**
+     * 更新站点数据
+     * @param string $dbName 数据库
+     * @param string $domain 域名
+     * @return string
+     */
+    public function updateSiteByHttps(string $dbName, string $domain)
+    {
+        $sql = "update `$dbName`.wp_options set option_value = 'https://" . $domain . "' where option_name= 'siteurl' or option_name = 'home' or option_name = 'blogname'";
+        try {
+            $this->mysqlPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->mysqlPdo->exec($sql);
+            echo $sql . " DONE . \n"; //输出信息
+            return $sql;
+        } catch (Throwable $e) {
+            echo "updateSite ERROR : " . $e->getMessage() . "; SQL: " . $sql . "\n";
         }
     }
 
