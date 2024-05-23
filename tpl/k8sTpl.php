@@ -38,5 +38,9 @@ spec:
       - name: nginx
         image: nginx:latest
         ports:
-        - containerPort: 81       
+        - containerPort: 81 
+apiVersion: apps/v3
+kind: PRODUCTION
+metadata:
+  name: nginx-deployment              
 TPL;
