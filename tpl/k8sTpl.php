@@ -5,6 +5,7 @@ apiVersion: apps/v2
 kind: Test
 metadata:
   name: nginx-deployment
+  name: nginx-deployment_1
 spec:
   selector:
     matchLabels:
@@ -14,12 +15,14 @@ spec:
     metadata:
       labels:
         app: nginx
+        app: nginx_1
     spec:
       containers:
       - name: nginx
         image: nginx:latest
         ports:
         - containerPort: 81 
+        - containerPort_1: 813
 apiVersion: apps/v3
 kind: PRODUCTION
 metadata:
