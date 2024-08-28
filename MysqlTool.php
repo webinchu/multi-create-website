@@ -93,39 +93,18 @@ class MysqlTool
     }
 
     /**
-     * 查询数据
-     * @param string $dbName 数据库
-     * @param string $fields 字段
-     * @param string $where 条件
-     * @return string
+     * 条件查询
+     * @param $tableName
+     * @param $query
+     * @return string|void
      */
-    public function findOne(string $dbName, string $fields, $where)
+    public function findByQuery($tableName, $query)
     {
-        $sql = "select " . $fields . " from `$dbName` where " . $where;
+        $sql = "select * from " . $tableName;
         try {
             $this->mysqlPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->mysqlPdo->exec($sql);
             echo $sql . " DONE . \n"; //输出信息
-            return $sql;
-        } catch (Throwable $e) {
-            echo "updateSite ERROR : " . $e->getMessage() . "; SQL: " . $sql . "\n";
-        }
-    }
-
-    /**
-     * 查询所有数据
-     * @param string $dbName 数据库
-     * @param string $fields 字段
-     * @param string $where 条件
-     * @return string
-     */
-    public function findAll(string $dbName, string $fields, $where)
-    {
-        $sql = "select " . $fields . " from `$dbName` where " . $where;
-        try {
-            $this->mysqlPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->mysqlPdo->exec($sql);
-            echo $sql . " DONE . \n";
             return $sql;
         } catch (Throwable $e) {
             echo "updateSite ERROR : " . $e->getMessage() . "; SQL: " . $sql . "\n";
