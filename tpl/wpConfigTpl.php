@@ -26,15 +26,6 @@ define( 'DB_CHARSET', 'utf8mb4' );
 /** The database collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
 
-define( 'AUTH_KEY',         'uVX.bxqcEP=W0l:;9rRWp`XY4)T_!u#]z9cJ,GkrGYbabuxfrSc!\$r7`DZh 7t.$' );
-define( 'SECURE_AUTH_KEY',  'O4CZd._,p!^tdJR{6:[3+::4uYtPB_nU5g@~Ek(^D8JQHY`mQSx6.Vjw}=9()e!d' );
-define( 'LOGGED_IN_KEY',    'o)Kznj*^3>A^I~05n^F=Q&/MwD&_Vq4cjF@yGcRAIgT%m<rglSJL|6|C$?-HPB@f' );
-define( 'NONCE_KEY',        '}i7tM>lsZ LfUR7p=aAmw#GOzvqYQ1{iwA:qVQw4~uy95*wg!7^NH&sK.?uU`Y((' );
-define( 'AUTH_SALT',        '8J6>t#cTW/hrn7c]^UiB7L*O9Wa@{)&VlUB=|y[_`thSXb?s*1~Z!/8hfG{{ZzMD' );
-define( 'SECURE_AUTH_SALT', '[!Key+}s,[z5r]i<p27qvvUHy H_La{Z*jb7%!,%C:!n<b<^hS@aA<% 6q^C2$^)' );
-define( 'LOGGED_IN_SALT',   'rs~~sYQUoi(Mem:8cjVU5FZ^AkPxuJIx%8<}<:T~M>:J1U:z82#gmz0S;cfc}M$3' );
-define( 'NONCE_SALT',       '6&Sm&1&]GJW%jF~7:A>Z>hZHp0<*u|x6|JX=(d\$y7FlQl<s/> @{}Byw!9Xu4C5P' );
-define( 'FS_METHOD', 'direct' );
 /**#@-*/
 
 /**
