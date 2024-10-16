@@ -16,13 +16,6 @@ spec:
       labels:
         app: nginx
         app: nginx_1
-    spec:
-      containers:
-      - name: nginx
-        image: nginx:latest
-        ports:
-        - containerPort: 81 
-        - containerPort_1: 813
 apiVersion: apps/v3
 kind: PRODUCTION
 metadata:
