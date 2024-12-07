@@ -126,6 +126,27 @@ class MysqlTool
         }
     }
 
+    //删除
+    public function delByArr()
+    {
+        // 构建 SQL 语句
+        $sql = "DELETE FROM wp_options  WHERE option_name = 'home' OR option_name ='siteurl'";
+
+        try {
+            // 设置 PDO 错误模式为异常
+            $this->mysqlPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            // 执行 SQL 语句
+            $this->mysqlPdo->exec($sql);
+
+            // 输出成功信息
+            echo $sql . " DONE. \n";
+        } catch (Throwable $e) {
+            // 输出错误信息
+            echo "update ERROR: " . $e->getMessage() . "; SQL: " . $sql . "\n";
+        }
+    }
+
 
 }
 
