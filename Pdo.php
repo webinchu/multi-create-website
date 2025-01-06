@@ -40,24 +40,6 @@ class Database
         return $stmt->execute();
     }
 
-    public function read($table, $conditions = [], $columns = '*')
-    {
-        $sql = "SELECT $columns FROM $table";
-        if (!empty($conditions)) {
-            $whereClauses = [];
-            foreach ($conditions as $key => $value) {
-                $whereClauses[] = "$key = :$key";
-            }
-            $sql .= " WHERE " . implode(' AND ', $whereClauses);
-        }
-        $stmt = $this->conn->prepare($sql);
-        foreach ($conditions as $key => $value) {
-            $stmt->bindValue(":$key", $value);
-        }
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
     public function update($table, $data, $conditions)
     {
         $setClauses = [];
