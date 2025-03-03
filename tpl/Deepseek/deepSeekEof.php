@@ -1,0 +1,19 @@
+<?php
+
+<<<EOP
+metadata:
+  name: nginx-deployment
+  name: nginx-deployment_1
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2 # 代表Nginx的副本数
+  template:
+    metadata:
+      labels:
+        app: nginx
+        app: nginx_1
+apiVersion: apps/v3      
+EOP;
+
