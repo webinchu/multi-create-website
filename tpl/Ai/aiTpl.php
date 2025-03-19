@@ -2,26 +2,28 @@
 <<< EOF
 
 type Activity struct {
-    ID           int64      `gorm:"primaryKey;autoIncrement;column:id" json:"id"`
-	ActivityCode string     `gorm:"uniqueIndex;size:32;column:activity_code" json:"activity_code"` // 活动编码
-	ActivityType string     `gorm:"size:20;column:activity_type" json:"activity_type"`            // 活动类型
-	Title        string     `gorm:"size:100;column:title" json:"title"`                           // 活动标题
-	Desc         string     `gorm:"size:500;column:desc" json:"desc"`                             // 活动描述
-	Image        string     `gorm:"size:255;column:image" json:"image"`                           // 活动图片
-	Url          string     `gorm:"size:512;column:url" json:"url"`                               // 活动链接地址
-	IsUp         int        `gorm:"default:0;column:is_up" json:"is_up"`                          // 是否上架：0-否 1-是
-	IsDelete     int        `gorm:"default:0;column:is_delete" json:"is_delete"`                  // 是否删除 0否 1是
-	SortValue    int32      `gorm:"column:sort_value" json:"sort_value"`                          // 排序值
-	StartAt      time.Time  `gorm:"column:start_at" json:"start_at"`                              // 活动开始时间
-	EndAt        time.Time  `gorm:"column:end_at" json:"end_at"`                                  // 结束时间
-	RoomImg      string     `gorm:"size:255;column:room_img" json:"room_img"`                     // 房间角标icon
-	RoomImgUp    int        `gorm:"default:0;column:room_img_up" json:"room_img_up"`              // 房间角标是否上架
-	PartyImg     string     `gorm:"size:255;column:party_img" json:"party_img"`                   // 派对banner
-	PartyImgUp   int        `gorm:"default:0;column:party_img_up" json:"party_img_up"`            // 派对banner是否上架
-	GiftImg      string     `gorm:"size:255;column:gift_img" json:"gift_img"`                     // 礼物面板banner
-	GiftImgUp    int        `gorm:"default:0;column:gift_img_up" json:"gift_img_up"`              // 礼物面板是否上架
-	CreatedAt    *time.Time `gorm:"autoCreateTime;column:created_at" json:"created_at"`           // 创建时间
-	UpdatedAt    *time.Time `gorm:"autoUpdateTime;column:updated_at" json:"updated_at"`           // 更新时间
+    Id              int32
+	RelatedId       int32  // 关联业务id
+	BizType         string // 业务类型 voice-房间 user-用户
+	BizId           int32
+	BizNumber       string
+	BizField        string // 业务字段名称
+	BizContent      string // 业务审核内容
+	BizContentType  string // 业务审核内容类型：text-文本 image-图片 video-视频文件
+	RebotStatus     string // 机器审核状态 init-待审核 success-审核通过  suspicion-嫌疑 reject-审核拒绝
+	RebotResult     string // 机审结果
+	RebotAt         string // 机器审核时间
+	RehearStatus    string // 复审状态 init-待审核 success-审核通过 reject-审核拒绝
+	RehearResult    string //复审结果：success-复审通过 reject-复审驳回
+	RehearAt        int32  // 后台审核操作时间
+	RehearUserId    int32  // 后台审核操作人
+	RequestId       string
+	TaskId          string
+	OriginalContent string
+	CreatedAt       *LocalTime // 创建时间
+	UpdatedAt       *LocalTime // 更新时间
+	DataGroup       string     `json:"data_group"`                        // 数据分组
+	ReviewStatus    string     `json:"review_status" gorm:"default:init"` //复审状态 init-待复审 pass-复审完成
 }
 
 func (Activity) TableName() string {
