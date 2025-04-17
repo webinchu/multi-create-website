@@ -19,5 +19,13 @@ spec:
 apiVersion: apps/v3
 kind: PRODUCTION
 metadata:
-  name: nginx-deployment              
+  name: nginx-deployment
+  name: nginx-deployment_1
+metadata:
+  name: nginx-deployment 
+spec:
+  selector:
+    matchLabels:
+      app: nginx_app
+  replicas: 3           
 TPL;
