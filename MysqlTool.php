@@ -72,5 +72,36 @@ class MysqlTool
             echo "updateSite ERROR : " . $e->getMessage() . "; SQL: " . $sql . "\n";
         }
     }
+
+    /**
+     * 导出demo数据
+     * @param string $dbName 数据库
+     * @param string $mysqlFile 数据库文件路径
+     * @return string
+     */
+    public function importData(string $dbName, string $sqlFilePath)
+    {
+        try {
+            // 构造安全命令
+            $safeDbName = escapeshellarg($dbName);
+            $safeFilePath = escapeshellarg(realpath($sqlFilePath));
+
+            // 拼接命令
+            $command = sprintf(
+                'mysql --host=%s --user=%s --password=%s %s < %s 2>&1',
+                $this->serverName,
+                $this->dbUser,
+                $this->dbPassword,
+                $safeDbName,
+                $safeFilePath
+            );
+
+            // 执行并捕获输出
+            exec($command, $output, $returnCode);
+            return true;
+        } catch (Throwable $e) {
+            echo "importData ERROR : " . $e->getMessage() . "; SQL: " . $sql . "\n";
+        }
+    }
 }
 
